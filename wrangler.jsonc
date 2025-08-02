@@ -1,0 +1,56 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "discord-uploader-js",
+	"main": "src/index.js",
+	"compatibility_date": "2025-07-31",
+	"observability": {
+		"enabled": true
+	},
+	"vars": {
+    "DISCORD_WEBHOOK": "https://discord.com/api/webhooks/1396129088183468082/w9qK31I8rHXRCWJ6jMcAhu_yFSOb-G3gEjZHCR2kKzC-0MalB3LUj97Nfx6kbGQib6-6"
+  	},
+	"d1_databases": [ // <-- 이 섹션 추가
+    {
+      "binding": "discord-upload-db", // <-- D1 생성 시 출력된 binding 이름
+      "database_name": "discord-upload-db", // <-- D1 생성 시 사용한 DB 이름
+      "database_id": "d1-db-cbeb8ada-4114-4bdc-8a0c-24decf86a243" // <-- D1 생성 시 출력된 ID
+	}]
+	/**
+	 * Smart Placement
+	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
+	 */
+	// "placement": { "mode": "smart" },
+
+	/**
+	 * Bindings
+	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+	 * databases, object storage, AI inference, real-time communication and more.
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 */
+
+	/**
+	 * Environment Variables
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
+	 */
+	// "vars": { "MY_VARIABLE": "production_value" },
+	/**
+	 * Note: Use secrets to store sensitive data.
+	 * https://developers.cloudflare.com/workers/configuration/secrets/
+	 */
+
+	/**
+	 * Static Assets
+	 * https://developers.cloudflare.com/workers/static-assets/binding/
+	 */
+	// "assets": { "directory": "./public/", "binding": "ASSETS" },
+
+	/**
+	 * Service Bindings (communicate between multiple Workers)
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+	 */
+	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+}
